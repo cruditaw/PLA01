@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PLA01</string>
+    <string name="labelName">"NOM: "</string>
+    <string name="labelGendre">"GENRE: "</string>
+    <string name="labelAge">"AGE: "</string>
+    <string name="labelDeleteDialog">"Etes-vous sûr de vouloir suprimer "</string>
+    <string name="labelDeleteDialogTitle">"Suppression de "</string>
+    <string name="labelYes">"Oui"</string>
+    <string name="labelNo">"Non"</string>
+</resources>
