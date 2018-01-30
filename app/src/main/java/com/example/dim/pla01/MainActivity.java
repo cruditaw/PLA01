@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         requestHelper = new RestRequest();
+        //requestHelper = new RestRequest("http://10.0.2.2:8080/maven_jws/webresources/com.mycompany.maven_jws.entities.person/count"); // works fine
         requestHelper.runRequest();
         dbHelper = new PersonDbModel(this); // model init
         final Cursor cursor = dbHelper.getAllPersons(); // persons list as cursor

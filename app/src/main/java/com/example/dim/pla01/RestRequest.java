@@ -22,7 +22,12 @@ import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 
 public class RestRequest {
 
+    String uri;
     public RestRequest() {
+    }
+
+    public RestRequest(String uri){
+        this.uri = uri;
     }
 
     public void runRequest() {
@@ -33,8 +38,9 @@ public class RestRequest {
                 // should be here
 
                 // Create URL
-                String url = "http://10.0.2.2:8080/maven_jws/webresources/com.mycompany.maven_jws.entities.person/count";
-                URL githubEndpoint = null;
+                String url = "http://10.0.2.2:8080/maven_jws/webresources/com.mycompany.maven_jws.entities.person/test";
+               // String url = uri;
+                        URL githubEndpoint = null;
                 try {
                     //http://desktop-bcvrv9o:8080/maven_jws/
                     //http://localhost:8080/maven_jws/webresources/com.mycompany.maven_jws.entities.person
