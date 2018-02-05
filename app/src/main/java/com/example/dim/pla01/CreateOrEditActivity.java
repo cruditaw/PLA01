@@ -30,7 +30,7 @@ public class CreateOrEditActivity extends AppCompatActivity {
         editAge = ((EditText)findViewById(R.id.inputAge));
 
         Intent intent = getIntent();
-        final Integer personID = intent.getIntExtra(MainActivity.KEY_EXTRA_CONTACT_ID, 0);
+        final Integer personID = intent.getIntExtra(LocalBrowseActivity.KEY_EXTRA_CONTACT_ID, 0);
 //        PersonEntity person = dbHelper.makeDummy(personID);
 
         if (personID > 0)

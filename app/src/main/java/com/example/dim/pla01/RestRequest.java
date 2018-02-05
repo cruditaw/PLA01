@@ -6,8 +6,6 @@ import android.util.JsonReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.HttpEntity;
@@ -22,65 +20,67 @@ import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 
 public class RestRequest {
 
-    String uri;
+    String url;
+    HttpEntity responseEntity;
+    //String response;
+    String method;
+
+
     public RestRequest() {
     }
 
-    public RestRequest(String uri){
-        this.uri = uri;
+    public RestRequest(String url) {
+        this.url = url;
     }
 
     public void runRequest() {
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
-                // All your networking logic
-                // should be here
-
-                // Create URL
-                String url = "http://10.0.2.2:8080/maven_jws/webresources/com.mycompany.maven_jws.entities.person/test";
-               // String url = uri;
-                        URL githubEndpoint = null;
-                try {
-                    //http://desktop-bcvrv9o:8080/maven_jws/
-                    //http://localhost:8080/maven_jws/webresources/com.mycompany.maven_jws.entities.person
-                    //http://localhost:8080/maven_jws/webresources/com.mycompany.maven_jws.entities.person/%7Bid%7D
-                    githubEndpoint = new URL(url);
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                }
-
                 // Create connection
-                //HttpURLConnection myConnection;
-                //HttpGet get;
                 HttpClient httpClient = new DefaultHttpClient();
+                InputStream inStream = null;
 
-                //  myConnection = (HttpURLConnection) githubEndpoint.openConnection();
-                // myConnection.setRequestMethod("GET");
-                //myConnection.setDoOutput(true);
-                // myConnection.setRequestProperty("Accept", "application/jason");
-
-                InputStreamReader inStreamR = null;
                 try {
                     HttpGet request = new HttpGet(url);
-                    request.addHeader("accept", "application/json");
-                    // request.addHeader("accept", "text/html");
-                   // request.addHeader("accept", "text/plain");
+                    request.addHeader("Accept", "application/json;q=0.9, text/html"); // "text/html", "text/plain"
+
+
                     HttpResponse response = httpClient.execute(request);
-                    System.out.println("Response : "+response.toString());
+
+                    System.out.println("Headers : " + response.toString());
                     for (Header h : response.getAllHeaders()) {
-                        System.out.println("Header name : "+h.getName()+" - value : "+h.getValue());
+                        System.out.println("Header name : " + h.getName() + " - value : " + h.getValue());
                     }
-                    //System.out.println("Response : "+);
-                    HttpEntity entity = response.getEntity();
-                    System.out.println("Encoding : "+entity.getContentEncoding());
-                    System.out.println("Type : "+entity.getContentType());
-                    System.out.println("Length : "+entity.getContentLength());
-                    System.out.println("Content : "+entity.getContent());
-                    InputStream inStream = entity.getContent();
+                    System.out.println("Response : " + response.toString());
+
+                    responseEntity = response.getEntity();
+                    System.out.println("Encoding : " + responseEntity.getContentEncoding());
+                    System.out.println("Type : " + responseEntity.getContentType());
+                    System.out.println("Length : " + responseEntity.getContentLength());
+                    System.out.println("Content : " + responseEntity.getContent());
+
+                    inStream = responseEntity.getContent();
+
+                    InputStreamReader inStreamR = null;
                     inStreamR = new InputStreamReader(inStream);
-  /*
-  //---- this code works fine, if server does not return json !
+
+                    // For json
+                    JsonReader jsonReader = new JsonReader(inStreamR);
+                    //jsonReader.setLenient(true); // if json malformed ?
+
+                    jsonReader.beginObject();
+                    while (jsonReader.hasNext()) {
+                        String key = jsonReader.nextName();
+                        String value = jsonReader.nextString();
+                        System.out.println("key : " + key + "  -  value : " + value);
+                    }
+                    jsonReader.endObject();
+                    jsonReader.close();
+
+
+                    // if not json, look 4 library !!
+            /*
                     StringBuilder sb = new StringBuilder();
                     BufferedReader br = new BufferedReader(inStreamR);
 
@@ -90,24 +90,8 @@ public class RestRequest {
 
                     System.out.println(sb.toString());
                     inStream.close();
-                */
+            */
 
-                    // code working for json
-                    JsonReader jsonReader = new JsonReader(inStreamR);
-                    //jsonReader.setLenient(true); // if json malformed
-                    jsonReader.beginObject(); // Start processing the JSON object
-                    while (jsonReader.hasNext()) { // Loop through all keys
-                        // if (key == "someText") {
-                        String key = jsonReader.nextName(); // Fetch the next key
-                        String value = jsonReader.nextString();
-                        System.out.println("key : " + key + "  -  value : " + value);
-                        break;
-                        // } else {
-                        //   jsonReader.skipValue(); // Skip values of other keys
-                        //}
-                    }
-
-                    jsonReader.close();
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -115,5 +99,6 @@ public class RestRequest {
             }
         });
     }
+
 }
 
