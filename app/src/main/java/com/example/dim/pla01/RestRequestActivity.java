@@ -12,7 +12,7 @@ public class RestRequestActivity extends AppCompatActivity {
 
 
             // todo : call correct uri depending on application logic !
-            String url = "http://10.0.2.2:8080/caveavinA/webresources/com.mycompany.caveavina.entities.vigneron/duplicate";
+            String url = "http://10.0.2.2:8080/caveavinA/webresources/com.mycompany.caveavina.entities.cave/2";
 
             RestRequest requestHelper = new RestRequest(url);
             requestHelper.runRequest();

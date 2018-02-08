@@ -37,7 +37,6 @@ public class PersonEntity implements Cloneable {
     public int hashCode() {
         int result = _id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (genre != null ? genre.hashCode() : 0);
         result = 31 * result + age;
         return result;
     }

@@ -43,7 +43,7 @@ public class RestRequest {
 
                 try {
                     HttpGet request = new HttpGet(url);
-                    request.addHeader("Accept", "application/json;q=0.9, text/html"); // "text/html", "text/plain"
+                    request.addHeader("Accept", "application/json");
 
 
                     HttpResponse response = httpClient.execute(request);
