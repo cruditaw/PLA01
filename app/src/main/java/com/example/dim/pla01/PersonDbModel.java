@@ -85,7 +85,7 @@ public class PersonDbModel extends SQLiteOpenHelper {
         Cursor itemCursor = getPerson(cid);
 
         PersonEntity shadow = new PersonEntity();
-//        shadow.set_id(itemCursor.getInt(itemCursor.getColumnIndex(PersonDbModel.PERSON_COLUMN_ID)));
+//        shadow.set_id(itemCursor.getInt(itemCursor.getColumnIndex(PersonDbModel.VIN_COLUMN_ID)));
         shadow.setName(itemCursor.getString(itemCursor.getColumnIndex(PersonDbModel.PERSON_COLUMN_NAME)));
         shadow.setGenre(itemCursor.getString(itemCursor.getColumnIndex(PersonDbModel.PERSON_COLUMN_GENDER)));
         shadow.setAge(itemCursor.getInt(itemCursor.getColumnIndex(PersonDbModel.PERSON_COLUMN_AGE)));
