@@ -18,7 +18,7 @@ import java.sql.Date;
 public class VinModel extends SQLiteOpenHelper {
 
 
-    public static final String DATABASE_NAME = "CAVDB_vin.db";
+    public static final String DATABASE_NAME = "CaveavinDB.db";
     private static final int DATABASE_VERSION = 1;
     public static final String VIN_TABLE_NAME = "vin";
     public static final String VIN_COLUMN_ID = "_id";
@@ -100,9 +100,8 @@ public class VinModel extends SQLiteOpenHelper {
 
     public VinEntity makeDummy(int cid){
         Cursor itemCursor = getVin(cid);
-
         VinEntity shadow = new VinEntity();
-//        shadow.set_id(itemCursor.getInt(itemCursor.getColumnIndex(PersonDbModel.VIN_COLUMN_ID)));
+        shadow.setVinId(itemCursor.getInt(itemCursor.getColumnIndex(VinModel.VIN_COLUMN_ID)));
         shadow.setVinLibelle(itemCursor.getString(itemCursor.getColumnIndex(VinModel.VIN_COLUMN_LIBELLE)));
         shadow.setVinDomaine(itemCursor.getString(itemCursor.getColumnIndex(VinModel.VIN_COLUMN_DOMAINE)));
         System.out.println("VinModel : makeDummy . May throw Null Pointer ! -> Date.valueOf() uninitialized  ! Format may be necessary");

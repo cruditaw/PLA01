@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class UtilisateurModel extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "CAVDB_utilisateur.db";
+    public static final String DATABASE_NAME = "CaveavinDB.db";
     private static final int DATABASE_VERSION = 1;
     public static final String UTILISATEUR_TABLE_NAME = "utilisateur";
     public static final String UTILISATEUR_COLUMN_ID = "_id";

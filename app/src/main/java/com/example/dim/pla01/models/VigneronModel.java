@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class VigneronModel extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "CAVDB_vigneron.db";
+    public static final String DATABASE_NAME = "CaveavinDB.db";
     private static final int DATABASE_VERSION = 1;
     public static final String VIGNERON_TABLE_NAME = "vigneron";
     public static final String VIGNERON_COLUMN_ID = "_id";

@@ -13,7 +13,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class CaveModel extends SQLiteOpenHelper {
 
 
-    public static final String DATABASE_NAME = "CAVDB_cave.db";
+    public static final String DATABASE_NAME = "CaveavinDB.db";
     private static final int DATABASE_VERSION = 1;
     public static final String CAVE_TABLE_NAME = "cave";
     public static final String CAVE_COLUMN_ID = "_id";
@@ -31,7 +31,9 @@ public class CaveModel extends SQLiteOpenHelper {
                 CAVE_COLUMN_ID + " INTEGER PRIMARY KEY, " +
                 CAVE_COLUMN_VIN + " INTEGER, "+
                 CAVE_COLUMN_UTILISATEUR + " INTEGER, "+
-                CAVE_COLUMN_NBOUTEILLES + " INTEGER);"
+                CAVE_COLUMN_NBOUTEILLES + " INTEGER, "+
+                " FOREIGN KEY ("+CAVE_COLUMN_VIN+") REFERENCES "+VinModel.VIN_TABLE_NAME+ "("+VinModel.VIN_COLUMN_ID+"), "+
+                " FOREIGN KEY ("+CAVE_COLUMN_UTILISATEUR+") REFERENCES "+UtilisateurModel.UTILISATEUR_TABLE_NAME+ "("+UtilisateurModel.UTILISATEUR_COLUMN_ID+"));"
         );
     }
 
@@ -61,19 +63,19 @@ public class CaveModel extends SQLiteOpenHelper {
         return true;
     }
 
-    public Cursor getUtilisateur(int id) {
+    public Cursor getCave(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery( "SELECT * FROM " + CAVE_TABLE_NAME + " WHERE " + CAVE_COLUMN_ID + " =? ", new String[] { Integer.toString(id) } );
         return res;
     }
 
-    public Cursor getAllUtilisateurs() {
+    public Cursor getAllCaves() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery( "SELECT * FROM " + CAVE_TABLE_NAME, null );
         return res;
     }
 
-    public Integer deleteUtilisateur(Integer id) {
+    public Integer deleteCave(Integer id) {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(CAVE_TABLE_NAME,
                 CAVE_COLUMN_ID + " = ? ",

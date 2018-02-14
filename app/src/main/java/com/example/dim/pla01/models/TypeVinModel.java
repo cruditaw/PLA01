@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class TypeVinModel extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "CAVDB_typevin.db";
+    public static final String DATABASE_NAME = "CaveavinDB.db";
     private static final int DATABASE_VERSION = 1;
     public static final String TYPEVIN_TABLE_NAME = "vin";
     public static final String TYPEVIN_COLUMN_ID = "_id";

@@ -1,35 +1,18 @@
 package com.example.dim.pla01.entities;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.annotation.JsonRootName;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.JsonValue;
-import com.fasterxml.jackson.databind.jsonschema.JsonSerializableSchema;
-
 import java.io.Serializable;
 import java.util.Date;
 
-@JsonPropertyOrder({"vinId", "vinLibelle", "vinType", "vinAnnee", "vinDomaine", "vinVigneron", "vinMiseBouteille"})
-@JsonRootName(value = "vin")
-@JsonSerializableSchema(id = "vinSchema")
 public class VinEntity implements Serializable, Cloneable {
 
     private static final long serialVersionUID = 1L;
 
-    @JsonValue
     private Integer vinId;
-    @JsonValue
     private String vinLibelle;
-    @JsonValue
     private String vinDomaine;
-    @JsonValue
     private Integer vinAnnee;
-    @JsonValue
     private Date vinMiseBouteille;
-    @JsonValue
     private TypeVinEntity vinType;
-    @JsonValue
     private VigneronEntity vinVigneron;
 
     public VinEntity() {
@@ -94,72 +77,58 @@ public class VinEntity implements Serializable, Cloneable {
                 '}';
     }
 
-    @JsonGetter
     public Integer getVinId() {
         return vinId;
     }
 
-    @JsonSetter
     public void setVinId(Integer vinId) {
         this.vinId = vinId;
     }
 
-    @JsonGetter
     public String getVinLibelle() {
         return vinLibelle;
     }
 
-    @JsonSetter
     public void setVinLibelle(String vinLibelle) {
         this.vinLibelle = vinLibelle;
     }
 
-    @JsonGetter
     public String getVinDomaine() {
         return vinDomaine;
     }
 
-    @JsonSetter
     public void setVinDomaine(String vinDomaine) {
         this.vinDomaine = vinDomaine;
     }
 
-    @JsonGetter
     public Integer getVinAnnee() {
         return vinAnnee;
     }
 
-    @JsonSetter
     public void setVinAnnee(Integer vinAnnee) {
         this.vinAnnee = vinAnnee;
     }
 
-    @JsonGetter
     public Date getVinMiseBouteille() {
         return vinMiseBouteille;
     }
 
-    @JsonSetter
     public void setVinMiseBouteille(Date vinMiseBouteille) {
         this.vinMiseBouteille = vinMiseBouteille;
     }
 
-    @JsonGetter
     public TypeVinEntity getVinType() {
         return vinType;
     }
 
-    @JsonSetter
     public void setVinType(TypeVinEntity vinType) {
         this.vinType = vinType;
     }
 
-    @JsonGetter
     public VigneronEntity getVinVigneron() {
         return vinVigneron;
     }
 
-    @JsonSetter
     public void setVinVigneron(VigneronEntity vinVigneron) {
         this.vinVigneron = vinVigneron;
     }
