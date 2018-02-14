@@ -1,8 +1,8 @@
 package com.example.dim.pla01;
 
 import android.os.AsyncTask;
-import android.util.JsonReader;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -43,7 +43,7 @@ public class RestRequest {
 
                 try {
                     HttpGet request = new HttpGet(url);
-                    request.addHeader("Accept", "application/json");
+                     request.addHeader("Content-Type", "application/xml");
 
 
                     HttpResponse response = httpClient.execute(request);
@@ -65,32 +65,34 @@ public class RestRequest {
                     InputStreamReader inStreamR = null;
                     inStreamR = new InputStreamReader(inStream);
 
-                    // For json
-                    JsonReader jsonReader = new JsonReader(inStreamR);
-                    //jsonReader.setLenient(true); // if json malformed ?
-
-                    jsonReader.beginObject();
-                    while (jsonReader.hasNext()) {
-                        String key = jsonReader.nextName();
-                        String value = jsonReader.nextString();
-                        System.out.println("key : " + key + "  -  value : " + value);
-                    }
-                    jsonReader.endObject();
-                    jsonReader.close();
-
-
-                    // if not json, look 4 library !!
-            /*
                     StringBuilder sb = new StringBuilder();
                     BufferedReader br = new BufferedReader(inStreamR);
-
-                    for (String s = br.readLine(); s!= null; s = br.readLine()) {
-                        sb.append(s).append("\n");
+                    for (String s = br.readLine(); s!= null; s =br.readLine()) {
+                        sb.append(s);
+                        sb.append(s).append(" \n");
                     }
 
                     System.out.println(sb.toString());
                     inStream.close();
-            */
+
+                    // For json
+                    // JsonReader jsonReader = new JsonReader(inStreamR);
+                    //jsonReader.setLenient(true); // if json malformed ?
+
+                    // jsonReader.beginObject();
+                    // while (jsonReader.hasNext()) {
+                    //  String key = jsonReader.nextName();
+                    //  String value = jsonReader.nextString();
+                    //  System.out.println("key : " + key + "  -  value : " + value);
+                    // }
+                    // jsonReader.endObject();
+                    // jsonReader.close();
+
+
+                    // if not json, look 4 library !!
+
+
+
 
 
                 } catch (IOException e) {

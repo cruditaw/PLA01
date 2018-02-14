@@ -33,9 +33,22 @@
         android:layout_weight="1">
 
         <Button
+            android:id="@+id/btnRqstExec"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Execute"/>
+
+        <Button
+            android:id="@+id/btnRqstRead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Read"/>
+
+        <Button
+            android:id="@+id/btnRqstEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="End"/>
     </LinearLayout>
 
 
