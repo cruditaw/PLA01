@@ -7,4 +7,8 @@
     <string name="labelDeleteDialogTitle">"Suppression de "</string>
     <string name="labelYes">"Oui"</string>
     <string name="labelNo">"Non"</string>
+    <string name="labelVin">VIN</string>
+    <string name="labelUser">USER</string>
+    <string name="labelNombre">NOMBRE</string>
+    <string name="labelValidate">VALIDATE</string>
 </resources>

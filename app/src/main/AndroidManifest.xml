@@ -28,6 +28,10 @@
         </activity>
         <activity android:name=".LocalBrowseActivity">
         </activity>
+        <activity android:name=".CaveBrowseActivity">
+        </activity>
+        <activity android:name=".CaveCrudActivity">
+        </activity>
     </application>
 
 </manifest>

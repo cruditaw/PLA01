@@ -3,7 +3,6 @@ package com.example.dim.pla01;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -13,8 +12,6 @@ import android.view.View.OnClickListener;
 * */
 
 public class MainActivity extends AppCompatActivity {
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +30,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, LocalBrowseActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.btnCaveService).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CaveBrowseActivity.class);
                 startActivity(intent);
             }
         });

@@ -27,10 +27,12 @@
         android:layout_weight="1">
 
         <Button
+            android:id="@+id/btnCaveService"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="DB_CAVE"/>
 
         <Space
             android:layout_width="0dp"

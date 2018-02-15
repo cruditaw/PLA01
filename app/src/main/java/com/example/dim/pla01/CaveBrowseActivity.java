@@ -1,10 +1,20 @@
 package com.example.dim.pla01;
 
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 import com.example.dim.pla01.entities.CaveEntity;
 import com.example.dim.pla01.entities.TypeVinEntity;
@@ -18,7 +28,6 @@ import com.example.dim.pla01.models.VigneronModel;
 import com.example.dim.pla01.models.VinModel;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,17 +35,18 @@ import java.util.List;
  */
 
 public class CaveBrowseActivity extends AppCompatActivity {
+
     public final static String KEY_EXTRA_CAVE_ID = "KEY_EXTRA_CAVE_ID";
 
     private int currentID;
     private ListView caveListView;
     private List<CaveEntity> caveList;
-    CaveModel dbHelper;
+    private CaveModel dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_local_browse);
+        setContentView(R.layout.activity_cave_browse);
 
         dbHelper = new CaveModel(this);
         final Cursor cursor = dbHelper.getAllCaves();
@@ -44,7 +54,7 @@ public class CaveBrowseActivity extends AppCompatActivity {
         caveList = makeCavesList(cursor);
 
         currentID = 0;  // list current selection index
-        caveListView = (ListView) findViewById(R.id.personListView); // list_view binding
+        caveListView = (ListView) findViewById(R.id.caveListView); // list_view binding
 
 
         // list_view columns
@@ -54,7 +64,105 @@ public class CaveBrowseActivity extends AppCompatActivity {
                 CaveModel.CAVE_COLUMN_UTILISATEUR,
                 CaveModel.CAVE_COLUMN_NBOUTEILLES
         };
+
+        // cave_item.xml layout widget name for list_view
+        int[] widgets = new int[]{
+                R.id.caveID,
+                R.id.caveVin,
+                R.id.caveUtilisateur,
+                R.id.caveNbouteilles
+        };
+
+        // setting parameters to list_view
+        SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(this, R.layout.cave_item, cursor, columns, widgets, 0);
+        caveListView.setAdapter(cursorAdapter);
+
+        // intent check
+        Intent receivedIntent = getIntent();
+        if (receivedIntent != null) {
+            currentID = receivedIntent.getIntExtra("cid", 0);
+            System.out.println("-- CaveBrowseActivity -- receivedIntent -> " + currentID);
+        }
+
+        // new_button on click listener
+        ((Button) findViewById(R.id.btnCaveNew)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CaveBrowseActivity.this, CaveCrudActivity.class);
+                intent.putExtra(KEY_EXTRA_CAVE_ID, 0);
+                startActivity(intent);
+            }
+        });
+
+        // modify_button on click listener
+        ((Button) findViewById(R.id.btnCaveMod)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (currentID > 0) {
+                    Intent intent = new Intent(getApplicationContext(), CaveCrudActivity.class);
+                    intent.putExtra(KEY_EXTRA_CAVE_ID, currentID);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Aucnune selection !", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        // delete_button on click listener -> Dialog builder should be moved elsewhere
+        ((Button) findViewById(R.id.btnCaveDel)).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (currentID > 0) {
+
+                    Builder builder = buildDeleteDialog(); // defining dialog build
+                    AlertDialog d = builder.create(); // creating dialog
+                    d.setTitle(R.string.labelDeleteDialogTitle);
+                    d.show();
+                    return;
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "Aucune selection !", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        // list_view on item click listener
+        caveListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView listView, View view,
+                                    int position, long id) {
+                Cursor itemCursor = (Cursor) caveListView.getItemAtPosition(position);
+                currentID = itemCursor.getInt(itemCursor.getColumnIndex(CaveModel.CAVE_COLUMN_ID));
+                System.out.println("-- caveListView -- OnItemClickListener -> CURRENT ID : " + currentID);
+
+            }
+        });
     }
+
+    @NonNull
+    private Builder buildDeleteDialog() {
+        Builder builder = new Builder(CaveBrowseActivity.this);
+        builder.setMessage(R.string.labelDeleteDialog)
+                .setPositiveButton(R.string.labelYes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dbHelper.deleteCave(currentID);
+                        Toast.makeText(getApplicationContext(), "Deleted Successfully", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), CaveBrowseActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    }
+                })
+
+                .setNegativeButton(R.string.labelNo, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User cancelled the dialog
+                        // nothing to do.. ?
+                    }
+                });
+        return builder;
+    }
+
 
     private ArrayList<CaveEntity> makeCavesList(Cursor cursor) {
         ArrayList<CaveEntity> list = new ArrayList<>();

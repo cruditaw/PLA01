@@ -74,7 +74,7 @@ public class LocalBrowseActivity extends AppCompatActivity {
         Intent receivedIntent = getIntent();
         if (receivedIntent != null) {
             currentID = receivedIntent.getIntExtra("cid", 0);
-            System.out.println("---------------- MainActivity INIT -> " + currentID);
+            System.out.println("---------------- MainActivity received cid -> " + currentID);
         }
 
         // new_button on click listener
