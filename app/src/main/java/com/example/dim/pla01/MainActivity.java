@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+import com.example.dim.pla01.managers.DbSyncTest;
+
 /*
 * FAIRE BACKING OBJECT
 *
@@ -39,6 +41,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, CaveBrowseActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.btnSyncService).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DbSyncTest testSync = new DbSyncTest("http://10.0.2.2:8080/caveavinA/webresources/com.mycompany.caveavina.cave/");
+                testSync.syncExtToLocal();
+
             }
         });
 

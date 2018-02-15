@@ -11,4 +11,5 @@
     <string name="labelUser">USER</string>
     <string name="labelNombre">NOMBRE</string>
     <string name="labelValidate">VALIDATE</string>
+    <string name="labelSync">Sync !</string>
 </resources>
