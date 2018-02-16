@@ -72,8 +72,8 @@ public class VinEntity implements Serializable, Cloneable {
                 ", vinDomaine='" + vinDomaine + '\'' +
                 ", vinAnnee=" + vinAnnee +
                 ", vinMiseBouteille=" + vinMiseBouteille +
-                ", vinType=" + vinType +
-                ", vinVigneron=" + vinVigneron +
+                ", vinType=" + vinType.toString() +
+                ", vinVigneron=" + vinVigneron.toString() +
                 '}';
     }
 

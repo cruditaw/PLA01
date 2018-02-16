@@ -70,4 +70,14 @@ public class CaveEntity implements Serializable, Cloneable {
     public void setCavVin(VinEntity cavVin) {
         this.cavVin = cavVin;
     }
+
+    @Override
+    public String toString() {
+        return "CaveEntity{" +
+                "cavId=" + cavId +
+                ", cavNombreBouteilles=" + cavNombreBouteilles.toString() +
+                ", cavUtilisateur=" + cavUtilisateur.toString() +
+                ", cavVin=" + cavVin +
+                '}';
+    }
 }
