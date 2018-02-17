@@ -69,6 +69,12 @@ public class CaveModel extends SQLiteOpenHelper {
         return res;
     }
 
+    public Cursor getVinById(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery( "SELECT * FROM " + VinModel.VIN_TABLE_NAME + " WHERE " + VinModel.VIN_COLUMN_ID + " =? ", new String[] { Integer.toString(id) } );
+        return res;
+    }
+
     public Cursor getAllCaves() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery( "SELECT * FROM " + CAVE_TABLE_NAME, null );
@@ -81,4 +87,6 @@ public class CaveModel extends SQLiteOpenHelper {
                 CAVE_COLUMN_ID + " = ? ",
                 new String[] { Integer.toString(id) });
     }
+
+
 }

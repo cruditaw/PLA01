@@ -50,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
                 DbSyncTest testSync = new DbSyncTest("http://10.0.2.2:8080/caveavinA/webresources/com.mycompany.caveavina.cave/");
                 testSync.syncExtToLocal();
 
+                testSync.showAfterSync();
+
+
             }
         });
 

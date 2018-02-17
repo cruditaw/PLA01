@@ -31,6 +31,7 @@ public class CaveCrudActivity extends AppCompatActivity {
 
         dbHelper = new CaveModel(this);
 
+        //lvEditVin = ((ListView) findViewById(R.id.))
         editVin= ((EditText)findViewById(R.id.itCaveVin));
         editUtilisateur = ((EditText)findViewById(R.id.itCaveUtilisateur));
         editNombre = ((EditText)findViewById(R.id.itCaveNombre));
@@ -61,7 +62,6 @@ public class CaveCrudActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 persistCave(caveID);
-
             }
         });
 
