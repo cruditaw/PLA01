@@ -3,56 +3,75 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:weightSum="7"
-    android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:weightSum="7"
+    app:layout_constraintVertical_chainStyle="spread"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/btnRestService"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
         android:text="TRY REST !"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:weightSum="5"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_weight="1">
-
-        <Button
-            android:id="@+id/btnCaveService"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="DB_CAVE"/>
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-
-        <Button
-            android:id="@+id/btnSyncService"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
+    <Button
+        android:id="@+id/btnCaveService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/labelSync"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:text="DB_CAVE"/>
+    <Button
+        android:id="@+id/btnVinService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="DB_VIN"/>
 
-    </LinearLayout>
+    <Button
+        android:id="@+id/btnTypeVinService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="DB_TYPEVIN"/>
+
+    <Button
+        android:id="@+id/btnUtiliateurService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="DB_USER"/>
+
+    <Button
+        android:id="@+id/btnVigneronService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="DB_VIGNERON"/>
+
+
+    <Button
+        android:id="@+id/btnSyncService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/labelSync"/>
+
 
     <Button
         android:id="@+id/btnLocalService"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
         android:text="TRY LOCAL !"/>

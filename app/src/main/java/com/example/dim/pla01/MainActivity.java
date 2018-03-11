@@ -8,11 +8,6 @@ import android.view.View.OnClickListener;
 
 import com.example.dim.pla01.managers.DbSyncTest;
 
-/*
-* FAIRE BACKING OBJECT
-*
-* */
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -36,6 +31,38 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.btnUtiliateurService).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, UtilisateurBrowseActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.btnVinService).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, VinBrowseActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.btnTypeVinService).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, TypeVinBrowseActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.btnVigneronService).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, VigneronBrowseActivity.class);
+                startActivity(intent);
+            }
+        });
+
         findViewById(R.id.btnCaveService).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,10 +76,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 DbSyncTest testSync = new DbSyncTest("http://10.0.2.2:8080/caveavinA/webresources/com.mycompany.caveavina.cave/");
                 testSync.syncExtToLocal();
-
                 testSync.showAfterSync();
-
-
             }
         });
 

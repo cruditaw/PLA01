@@ -2,59 +2,34 @@ package com.example.dim.pla01.entities;
 
 import android.support.annotation.Size;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.annotation.JsonRootName;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.JsonValue;
-import com.fasterxml.jackson.databind.jsonschema.JsonSerializableSchema;
-
 import java.io.Serializable;
 
 /**
  * Created by dim on 08/02/2018.
  */
 
-@JsonPropertyOrder({"vignId", "vignLibelle", "vignAdresse", "vignAdresse1", "vignAdresse2", "vignVille", "vignCp", "vignTel", "vignMail"})
-@JsonRootName(value = "vigneron")
-@JsonSerializableSchema(id = "vigneronSchema")
 public class VigneronEntity implements Serializable, Cloneable {
 
     private static final long serialVersionUID = 1L;
-    @JsonValue
     private Integer vignId;
     @Size(max = 100)
-    @JsonValue
     private String vignLibelle;
     @Size(max = 100)
-    @JsonValue
     private String vignAdresse;
     @Size(max = 100)
-    @JsonValue
     private String vignAdresse1;
     @Size(max = 100)
-    @JsonValue
     private String vignAdresse2;
     @Size(max = 100)
-    @JsonValue
     private String vignVille;
     @Size(max = 50)
-    @JsonValue
     private String vignCp;
     @Size(max = 50)
-    @JsonValue
     private String vignTel;
     @Size(max = 1000)
-    @JsonValue
     private String vignMail;
 
     public VigneronEntity() {
-    }
-
-    @JsonCreator
-    public VigneronEntity(Integer vignId) {
-        this.vignId = vignId;
     }
 
     @Override
@@ -73,92 +48,74 @@ public class VigneronEntity implements Serializable, Cloneable {
         return v;
     }
 
-    @JsonGetter
     public Integer getVignId() {
         return vignId;
     }
 
-    @JsonSetter
     public void setVignId(Integer vignId) {
         this.vignId = vignId;
     }
 
-    @JsonGetter
     public String getVignLibelle() {
         return vignLibelle;
     }
 
-    @JsonSetter
     public void setVignLibelle(String vignLibelle) {
         this.vignLibelle = vignLibelle;
     }
 
-    @JsonGetter
     public String getVignAdresse() {
         return vignAdresse;
     }
 
-    @JsonSetter
     public void setVignAdresse(String vignAdresse) {
         this.vignAdresse = vignAdresse;
     }
 
-    @JsonGetter
     public String getVignAdresse1() {
         return vignAdresse1;
     }
 
-    @JsonSetter
     public void setVignAdresse1(String vignAdresse1) {
         this.vignAdresse1 = vignAdresse1;
     }
 
-    @JsonGetter
     public String getVignAdresse2() {
         return vignAdresse2;
     }
 
-    @JsonSetter
     public void setVignAdresse2(String vignAdresse2) {
         this.vignAdresse2 = vignAdresse2;
     }
 
-    @JsonGetter
     public String getVignVille() {
         return vignVille;
     }
 
-    @JsonSetter
     public void setVignVille(String vignVille) {
         this.vignVille = vignVille;
     }
 
-    @JsonGetter
     public String getVignCp() {
         return vignCp;
     }
 
-    @JsonSetter
     public void setVignCp(String vignCp) {
         this.vignCp = vignCp;
     }
 
-    @JsonGetter
     public String getVignTel() {
         return vignTel;
     }
 
-    @JsonSetter
     public void setVignTel(String vignTel) {
         this.vignTel = vignTel;
     }
 
-    @JsonGetter
     public String getVignMail() {
         return vignMail;
     }
 
-    @JsonSetter
     public void setVignMail(String vignMail) {
         this.vignMail = vignMail;
     }

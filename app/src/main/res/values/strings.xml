@@ -11,5 +11,20 @@
     <string name="labelUser">USER</string>
     <string name="labelNombre">NOMBRE</string>
     <string name="labelValidate">VALIDATE</string>
+    <string name="labelLibelle">LIBELLE</string>
+    <string name="labelDomaine">DOMAINE</string>
+    <string name="labelAnnee">ANNEE</string>
+    <string name="labelMiseBouteille">MB</string>
+    <string name="labelType">TYPE</string>
+    <string name="labelVigneron">VIGNERON</string>
+    <string name="labelNom">NOM</string>
+    <string name="labelPrenom">PRENOM</string>
+    <string name="labelMail">MAIL</string>
+    <string name="labelAdresse">ADRESSE</string>
+    <string name="labelAdresse1">ADRESSE1</string>
+    <string name="labelAdresse2">ADRESSE2</string>
+    <string name="labelTelephone">TELEPHONE</string>
+    <string name="labelVille">VILLE</string>
+    <string name="labelCodePostal">C.P.</string>
     <string name="labelSync">Sync !</string>
 </resources>

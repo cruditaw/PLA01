@@ -12,10 +12,6 @@ import android.widget.Toast;
 
 import com.example.dim.pla01.models.CaveModel;
 
-/**
- * Created by dim on 15/02/2018.
- */
-
 public class CaveCrudActivity extends AppCompatActivity {
 
     private EditText editVin;
