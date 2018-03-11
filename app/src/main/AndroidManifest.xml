@@ -18,10 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <!--
-        <activity android:name=".Main2Activity">
-        </activity>
-        -->
         <activity android:name=".CreateOrEditActivity">
         </activity>
         <activity android:name=".RestRequestActivity">
@@ -31,6 +27,8 @@
         <activity android:name=".CaveBrowseActivity">
         </activity>
         <activity android:name=".CaveCrudActivity">
+        </activity>
+        <activity android:name=".VinBrowseActivity">
         </activity>
         <activity android:name=".VinCrudActivity">
         </activity>
